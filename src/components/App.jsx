@@ -1,19 +1,55 @@
-import { lazy } from "react";
-import { Routes, Route } from "react-router-dom";
-import { HeaderLayout } from "./HeaderLayout/HeaderLayout";
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { useAuth } from '../hooks/useAuth';
+import { refresh } from 'redux/auth/operations';
+import { Loader } from './Loaders/Loader';
 
-const Profile = lazy(() => import("../page/Profile/Home"));
-const Account = lazy(() => import("../page/Account/Account"));
+const HomePage = lazy(() => import('../pages/MainPage'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const PhoneBook = lazy(() => import('../pages/PhoneBook'));
 
-const App = () => {
-  return (
+export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader isOpen={isRefreshing} />
+  ) : (
     <Routes>
-      <Route path="/" element={<HeaderLayout />}>
-        <Route index element={<Profile />} />
-        <Route path="Account" element={<Account />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<PhoneBook />} />
+          }
+        />
+        <Route path="*" element={<p></p>} />
       </Route>
     </Routes>
   );
 };
-
-export default App;

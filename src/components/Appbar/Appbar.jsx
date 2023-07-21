@@ -1,16 +1,17 @@
-import { Container, Header, Link } from "./Appbar.styled";
+// import { Navigation } from '../Navigation/Navigation';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { Navigation } from 'components/Navigation/Navigation';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { useAuth } from 'hooks';
+import { Header } from './AppBar.styled';
 
-export const Appbar = () => {
+export const AppBar = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <Container>
-      <Header>
-        <nav>
-          <Link to="/" end>
-            Profile
-          </Link>
-          <Link to="Account">My Account</Link>
-        </nav>
-      </Header>
-    </Container>
+    <Header>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </Header>
   );
 };
