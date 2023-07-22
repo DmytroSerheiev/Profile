@@ -1,3 +1,4 @@
+// Imports
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -6,14 +7,16 @@ import TextField from '@mui/material/TextField';
 import { Box, Button } from '@mui/material';
 import { useAuth } from 'hooks';
 
-const values = {
+const initialValues = {
   email: '',
   password: '',
 };
 
 const SignInValidationSchema = Yup.object().shape({
-  email: Yup.string().email('The email is incorrect').required('Required'),
-  password: Yup.string().required('Required'),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 export const LoginForm = () => {
@@ -25,7 +28,7 @@ export const LoginForm = () => {
   };
 
   const formik = useFormik({
-    initialValues: values,
+    initialValues,
     validationSchema: SignInValidationSchema,
     onSubmit: handleSubmit,
   });

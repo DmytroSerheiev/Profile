@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { logout } from 'redux/auth/operations';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useAuth } from 'hooks';
+import defaultAvatar from '../../img/avatar.png';
 import {
   UserGrap,
   StyledAvatar,
@@ -14,13 +15,24 @@ import {
   ListItem,
   CustomLink,
   ModalOverlay,
+  AvatarMoodal,
+  ModalText,
+  Icons,
 } from './UserMenu.styled';
 import { deepPurple } from '@mui/material/colors';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-import PersonAddIcon from '@mui/icons-material/PersonAdd'; // Імпортуємо іконку
+import PersonAddIcon from '@mui/icons-material/PersonAdd'; // Import the icon
+import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
+import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
+import BedtimeOutlinedIcon from '@mui/icons-material/BedtimeOutlined';
+import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -45,7 +57,7 @@ export const UserMenu = () => {
   };
 
   useEffect(() => {
-    // Додаємо клас "modal-open" для body, якщо модальне вікно відкрите
+    // Add the "modal-open" class to the body if the modal is open
     if (isModalOpen) {
       document.body.classList.add('modal-open');
     } else {
@@ -73,18 +85,25 @@ export const UserMenu = () => {
         style={{ display: 'none' }}
         onChange={handleAvatarChange}
       />
+      <Icons>
+        <SearchOutlinedIcon />
+        <TranslateOutlinedIcon />
+        <BedtimeOutlinedIcon />
+        <DashboardCustomizeOutlinedIcon />
+        <NotificationsNoneOutlinedIcon />
+      </Icons>
 
-      {/* Іконка користувача */}
+      {/* User Icon */}
       <StyledAvatar
-        src={avatarUrl || undefined}
+        src={avatarUrl || defaultAvatar}
         sx={{ bgcolor: deepPurple[500] }}
-        onClick={() => setModalOpen(true)} // Відкриваємо модальне вікно при кліку на аватарку
+        onClick={() => setModalOpen(true)} // Open the modal on avatar click
       >
-        {!avatarUrl ? <PersonAddIcon /> : <AccountCircleIcon />}{' '}
-        {/* Відображаємо іконку, якщо немає аватару */}
+        {!avatarUrl ? <PersonAddIcon /> : null}{' '}
+        {/* Display an icon if there is no avatar */}
       </StyledAvatar>
 
-      {user && <Text>{user.name}</Text>}
+      {/* {user && <Text>{user.name}</Text>} */}
 
       {isModalOpen && (
         <ModalOverlay className="modal-overlay" onClick={handleModalClose}>
@@ -92,7 +111,7 @@ export const UserMenu = () => {
             style={{ width: 230, height: 360 }}
             onClick={e => e.stopPropagation()}
           >
-            <div
+            <AvatarMoodal
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -106,32 +125,48 @@ export const UserMenu = () => {
                   style={{ marginRight: 10 }}
                 >
                   {!avatarUrl ? <PersonAddIcon /> : null}{' '}
-                  {/* Відображаємо іконку, якщо немає аватару */}
+                  {/* Display an icon if there is no avatar */}
                 </StyledAvatar>
               </label>
               {user && <Text>{user.name}</Text>}
-            </div>
+            </AvatarMoodal>
 
             <NavList>
               <ListItem>
                 <CustomLink to="/">
                   <PermIdentityIcon style={{ marginRight: 8 }} />
-                  Профіль
+                  Profile
                 </CustomLink>
+                <ModalText>
+                  <MailOutlinedIcon />
+                  Inbox
+                </ModalText>
+                <ModalText>
+                  <ChatBubbleOutlineOutlinedIcon />
+                  Chat
+                </ModalText>
               </ListItem>
               {isLoggedIn && (
                 <ListItem>
                   <CustomLink to="/contacts">
                     <SettingsIcon style={{ marginRight: 8 }} />
-                    Налаштування
+                    Settings
                   </CustomLink>
+                  <ModalText>
+                    <MonetizationOnOutlinedIcon />
+                    Pricing
+                  </ModalText>
+                  <ModalText>
+                    <LiveHelpOutlinedIcon />
+                    FAQ
+                  </ModalText>
                 </ListItem>
               )}
             </NavList>
 
             <ModalButton onClick={handleLogout}>
               <LogoutIcon />
-              Вийти
+              Logout
             </ModalButton>
           </ModalContent>
         </ModalOverlay>
