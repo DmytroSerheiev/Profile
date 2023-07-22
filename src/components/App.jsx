@@ -8,7 +8,7 @@ import { useAuth } from '../hooks/useAuth';
 import { refresh } from 'redux/auth/operations';
 import { Loader } from './Loaders/Loader';
 
-const HomePage = lazy(() => import('../pages/MainPage'));
+const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const PhoneBook = lazy(() => import('../pages/PhoneBook'));

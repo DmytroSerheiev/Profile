@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
+  max-width: 1390px; /* Set the maximum width for the container */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin: 0 auto;
 
   color: black;
   background-color: white;

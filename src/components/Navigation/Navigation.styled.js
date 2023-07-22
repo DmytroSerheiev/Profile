@@ -33,7 +33,7 @@ export const NavList = styled.ul`
   flex-direction: column; /* Set flex-direction to column to arrange items vertically */
 `;
 export const ListItem = styled.li`
-  padding-left: 200px;
+  padding-left: 10px;
   margin-right: 10px;
   list-style: none;
 `;

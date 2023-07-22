@@ -17,7 +17,7 @@ export const StyledAvatar = styled(Avatar)`
   margin-top: 10px;
   margin-bottom: 10px;
 
-  margin-right: 200px;
+  margin-right: 10px;
   font-weight: bold;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);

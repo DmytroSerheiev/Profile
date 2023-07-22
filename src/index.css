@@ -7,12 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(
-      rgba(255, 249, 231, 0.7),
-      rgba(255, 249, 231, 0.7)
-    ),
-    url('./img/bg.jpg');
-    background-size: cover;
+  background-color: #f4f5fa;
 }
 
 code {
