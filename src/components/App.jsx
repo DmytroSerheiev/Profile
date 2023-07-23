@@ -11,7 +11,7 @@ import { Loader } from './Loaders/Loader';
 const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
-const PhoneBook = lazy(() => import('../pages/PhoneBook'));
+const Settings = lazy(() => import('../pages/Settings.jsx/Settings'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export const App = () => {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<PhoneBook />} />
+            <PrivateRoute redirectTo="/login" component={<Settings />} />
           }
         />
         <Route path="*" element={<p></p>} />
