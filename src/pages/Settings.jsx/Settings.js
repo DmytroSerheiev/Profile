@@ -1,5 +1,5 @@
 // import { nanoid } from 'nanoid';
-import { ContactForm } from 'components/PhonebookForm/ContactForm ';
+import { ContactForm } from 'components/Form/ContactForm ';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactsList/ContactsList';
 import { Box } from 'components/common/Box';

@@ -1,37 +1,41 @@
-import { Contact } from './ContactsList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { getVisibleContacts, selectIsLoading } from 'redux/contacts/selectors';
-import Button from '@mui/material/Button';
+import { List, ListItem, ListItemText, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Loader } from '../Loaders/Loader';
-
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(getVisibleContacts);
+
   const removeContact = contactId => {
     dispatch(deleteContact(contactId));
   };
 
-  const visibleContacts = useSelector(getVisibleContacts);
   return (
-    <ul>
+    <>
       <Loader isOpen={isLoading} />
-      {visibleContacts.map(({ id, name, number }) => {
-        return (
-          <Contact key={id}>
-            {name} {number}
-            <Button
-              variant="outlined"
-              onClick={() => removeContact(id)}
-              startIcon={<DeleteIcon />}
-            >
-              Delete
-            </Button>
-          </Contact>
-        );
-      })}
-    </ul>
+      <List>
+        {contacts.map(({ id, firstName, lastName, phoneNumber }) => {
+          return (
+            <ListItem key={id}>
+              <ListItemText
+                primary={`${firstName} ${lastName} - ${phoneNumber}`}
+              />
+              <Button
+                variant="outlined"
+                onClick={() => removeContact(id)}
+                startIcon={<DeleteIcon />}
+              >
+                Удалить
+              </Button>
+            </ListItem>
+          );
+        })}
+      </List>
+    </>
   );
 };
+// до изменений

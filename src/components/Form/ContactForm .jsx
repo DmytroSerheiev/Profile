@@ -1,12 +1,13 @@
-import { Form, Formik, ErrorMessage } from 'formik';
+import { Form, Formik, ErrorMessage } from 'formik'; //
 import { SelectInput, InputContainer, InputRow } from './ContactForm.styled';
-import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
-import { addContact } from 'redux/contacts/operations';
+import * as Yup from 'yup'; //
+import { useDispatch, useSelector } from 'react-redux'; //
+import { selectContacts } from 'redux/contacts/selectors'; //
+import { addContact } from 'redux/contacts/operations'; //
 
-import { Button, TextField } from '@mui/material';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { Button, TextField } from '@mui/material'; //
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'; //
+// до замени
 
 const initialValues = {
   firstName: '',
@@ -25,17 +26,17 @@ const initialValues = {
 
 const schema = Yup.object().shape({
   firstName: Yup.string().required('Обязательное поле'),
-  lastName: Yup.string().required('Обязательное поле'),
-  email: Yup.string().email('Некорректный email').required('Обязательное поле'),
-  organizer: Yup.string().required('Обязательное поле'),
-  phoneNumber: Yup.string().required('Обязательное поле'),
-  address: Yup.string().required('Обязательное поле'),
-  state: Yup.string().required('Обязательное поле'),
-  zipCode: Yup.string().required('Обязательное поле'),
-  country: Yup.string().required('Обязательное поле'),
-  language: Yup.string().required('Обязательное поле'),
-  timezone: Yup.string().required('Обязательное поле'),
-  currency: Yup.string().required('Обязательное поле'),
+  lastName: Yup.string().optional('Обязательное поле'),
+  email: Yup.string().email('Некорректный email').optional('Обязательное поле'),
+  organizer: Yup.string().optional('Обязательное поле'),
+  phoneNumber: Yup.string().optional('Обязательное поле'),
+  address: Yup.string().optional('Обязательное поле'),
+  state: Yup.string().optional('Обязательное поле'),
+  zipCode: Yup.string().optional('Обязательное поле'),
+  country: Yup.string().optional('Обязательное поле'),
+  language: Yup.string().optional('Обязательное поле'),
+  timezone: Yup.string().optional('Обязательное поле'),
+  currency: Yup.string().optional('Обязательное поле'),
 });
 
 export const ContactForm = () => {
@@ -434,3 +435,4 @@ export const ContactForm = () => {
     </Formik>
   );
 };
+// до изменений
