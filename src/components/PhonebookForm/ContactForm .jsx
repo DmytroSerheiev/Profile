@@ -1,5 +1,5 @@
 import { Form, Formik, ErrorMessage } from 'formik';
-import { SelectInput } from './ContactForm.styled';
+import { SelectInput, InputContainer, InputRow } from './ContactForm.styled';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
@@ -67,8 +67,8 @@ export const ContactForm = () => {
     >
       {formik => (
         <Form onSubmit={formik.handleSubmit}>
-          <div className="input-row">
-            <div className="input-container">
+          <InputRow>
+            <InputContainer>
               <label htmlFor="firstName">First Name</label>
               <TextField
                 fullWidth
@@ -98,9 +98,10 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-            <div className="input-container">
+            </InputContainer>
+            <InputContainer>
               <label htmlFor="lastName">Last Name</label>
               <TextField
                 fullWidth
@@ -130,13 +131,14 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
           {/* Add the remaining input and select fields with similar structure */}
-          <div className="input-row">
-            <div className="input-container">
+          <InputRow>
+            <InputContainer>
               <label htmlFor="email">Email</label>
               <TextField
                 fullWidth
@@ -164,9 +166,10 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-            <div className="input-container">
+            </InputContainer>
+            <InputContainer>
               <label htmlFor="organizer">Organizer</label>
               <TextField
                 fullWidth
@@ -196,12 +199,13 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
-          <div className="input-row">
-            <div className="input-container">
+          <InputRow>
+            <InputContainer>
               <label htmlFor="phoneNumber">Phone Number</label>
               <TextField
                 fullWidth
@@ -233,9 +237,10 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-            <div className="input-container">
+            </InputContainer>
+            <InputContainer>
               <label htmlFor="address">Address</label>
               <TextField
                 fullWidth
@@ -263,14 +268,15 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
           {/* Add the remaining input and select fields with similar structure */}
-          <div className="input-row">
+          <InputRow>
             {/* State */}
-            <div className="input-container">
+            <InputContainer>
               <label htmlFor="state">State</label>
               <TextField
                 fullWidth
@@ -298,10 +304,11 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
+            </InputContainer>
             {/* Zip Code */}
-            <div className="input-container">
+            <InputContainer>
               <label htmlFor="zipCode">Zip Code</label>
               <TextField
                 fullWidth
@@ -329,13 +336,14 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
-          <div className="input-row">
+          <InputRow>
             {/* Country */}
-            <div className="input-container">
+            <InputContainer>
               <label htmlFor="country">Country</label>
               <TextField
                 fullWidth
@@ -363,10 +371,11 @@ export const ContactForm = () => {
                     />
                   ),
                 }}
+                style={{ width: '500px' }}
               />
-            </div>
+            </InputContainer>
             {/* Language */}
-            <div className="input-container">
+            <InputContainer style={{ width: '500px' }}>
               <label htmlFor="language">Language</label>
               <SelectInput name="language" id="language">
                 <option value="">Select language</option>
@@ -379,13 +388,13 @@ export const ContactForm = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
           {/* Add the remaining input and select fields with similar structure */}
-          <div className="input-row">
+          <InputRow>
             {/* Timezone */}
-            <div className="input-container">
+            <InputContainer style={{ width: '500px' }}>
               <label htmlFor="timezone">Timezone</label>
               <SelectInput name="timezone" id="timezone">
                 <option value="">Select timezone</option>
@@ -398,14 +407,15 @@ export const ContactForm = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </InputContainer>
             {/* Currency */}
-            <div className="input-container">
+            <InputContainer style={{ width: '500px' }}>
               <label htmlFor="currency">Currency</label>
               <SelectInput name="currency" id="currency">
                 <option value="">Select currency</option>
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
+
                 {/* Add more currency options if needed */}
               </SelectInput>
               <ErrorMessage
@@ -413,8 +423,8 @@ export const ContactForm = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
-          </div>
+            </InputContainer>
+          </InputRow>
 
           <Button type="submit" color="primary" variant="contained">
             Submit

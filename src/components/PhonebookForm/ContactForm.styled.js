@@ -32,6 +32,12 @@ export const SelectInput = styled.select`
 export const InputContainer = styled.div`
   position: relative;
   margin-bottom: 10px;
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
 `;
 
 export const InputLabel = styled.label`
@@ -49,4 +55,9 @@ export const ErrorMsg = styled.div`
   color: red;
   font-size: 12px;
   margin-top: 2px;
+`;
+export const InputRow = styled.div`
+  display: flex;
+  justify-content: space-around;
+  height: 105px;
 `;

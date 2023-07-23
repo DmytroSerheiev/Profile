@@ -17,7 +17,7 @@ export const Icons = styled.div`
 // background-color: #F4F5FA;
 export const Section = styled.div`
   width: 1190px;
-  height: 694px; /* Set the height of the image to 300px */
+  height: 800px; /* Set the height of the image to 300px */
   object-fit: cover;
   background: white; /* Make sure the image covers the entire container */
   margin: auto;

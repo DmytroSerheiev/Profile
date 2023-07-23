@@ -23,7 +23,7 @@ export default function Settings() {
           <title>My Settings</title>
         </Helmet>
         <Box display="flex" flexDirection="column" ml="20px">
-          <h1>Settings</h1>
+          {/* <h1>Settings</h1> */}
           <ContactForm />
           <h2>Contacts</h2>
           <Filter />
