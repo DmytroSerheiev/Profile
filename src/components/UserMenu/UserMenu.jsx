@@ -23,7 +23,7 @@ import { deepPurple } from '@mui/material/colors';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-import PersonAddIcon from '@mui/icons-material/PersonAdd'; // Import the icon
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
@@ -63,6 +63,22 @@ export const UserMenu = () => {
     } else {
       document.body.classList.remove('modal-open');
     }
+
+    // Function to handle the "Esc" key press
+    const handleEscKeyPress = event => {
+      if (event.keyCode === 27 && isModalOpen) {
+        // If the "Esc" key is pressed and the modal is open, close the modal
+        handleModalClose();
+      }
+    };
+
+    // Add event listener for "Esc" key press
+    document.addEventListener('keydown', handleEscKeyPress);
+
+    // Clean up the event listener on unmount
+    return () => {
+      document.removeEventListener('keydown', handleEscKeyPress);
+    };
   }, [isModalOpen]);
 
   const handleAvatarChange = e => {
@@ -74,6 +90,16 @@ export const UserMenu = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleProfileClick = () => {
+    handleModalClose(); // Close the modal when clicking on "Profile"
+    // Add any specific logic for the "Profile" button if needed
+  };
+
+  const handleSettingsClick = () => {
+    handleModalClose(); // Close the modal when clicking on "Settings"
+    // Add any specific logic for the "Settings" button if needed
   };
 
   return (
@@ -99,11 +125,9 @@ export const UserMenu = () => {
         sx={{ bgcolor: deepPurple[500] }}
         onClick={() => setModalOpen(true)} // Open the modal on avatar click
       >
-        {!avatarUrl ? <PersonAddIcon /> : null}{' '}
+        {!avatarUrl ? <PersonAddIcon /> : null}
         {/* Display an icon if there is no avatar */}
       </StyledAvatar>
-
-      {/* {user && <Text>{user.name}</Text>} */}
 
       {isModalOpen && (
         <ModalOverlay className="modal-overlay" onClick={handleModalClose}>
@@ -124,7 +148,7 @@ export const UserMenu = () => {
                   sx={{ bgcolor: deepPurple[500] }}
                   style={{ marginRight: 10 }}
                 >
-                  {!avatarUrl ? <PersonAddIcon /> : null}{' '}
+                  {!avatarUrl ? <PersonAddIcon /> : null}
                   {/* Display an icon if there is no avatar */}
                 </StyledAvatar>
               </label>
@@ -133,7 +157,7 @@ export const UserMenu = () => {
 
             <NavList>
               <ListItem>
-                <CustomLink to="/">
+                <CustomLink to="/" onClick={handleProfileClick}>
                   <PermIdentityIcon style={{ marginRight: 8 }} />
                   Profile
                 </CustomLink>
@@ -148,7 +172,7 @@ export const UserMenu = () => {
               </ListItem>
               {isLoggedIn && (
                 <ListItem>
-                  <CustomLink to="/contacts">
+                  <CustomLink to="/contacts" onClick={handleSettingsClick}>
                     <SettingsIcon style={{ marginRight: 8 }} />
                     Settings
                   </CustomLink>
