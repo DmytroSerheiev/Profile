@@ -8,10 +8,10 @@ import { useAuth } from '../hooks/useAuth';
 import { refresh } from 'redux/auth/operations';
 import { Loader } from './Loaders/Loader';
 
-const HomePage = lazy(() => import('../pages/MainPage/MainPage'));
+const HomePage = lazy(() => import('../pages/MainPage'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
-const Settings = lazy(() => import('../pages/Settings.jsx/Settings'));
+const Settings = lazy(() => import('../pages/Settings'));
 
 export const App = () => {
   const dispatch = useDispatch();

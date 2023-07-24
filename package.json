@@ -1,12 +1,12 @@
 {
-  "name": "profile",
+  "name": "Dynasty-Dance-Clubs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmytroserheiev.github.io/profile/",
+  "homepage": "https://github.com/DmytroSerheiev/profile/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.14.1",
+    "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.3",

@@ -11,4 +11,4 @@ export const BannerImage = styled.img`
   height: 250px; /* Set the height of the image to 300px */
   object-fit: cover; /* Make sure the image covers the entire container */
 `;
-// background-color: #F4F5FA;
+// -color: #F4F5FA;

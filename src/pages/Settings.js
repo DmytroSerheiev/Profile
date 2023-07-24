@@ -1,6 +1,6 @@
 // import { nanoid } from 'nanoid';
-import { ContactForm } from 'components/Form/ContactForm ';
-import { Filter } from 'components/Filter/Filter';
+import { ContactForm } from 'components/SettingsForm/ContactForm ';
+
 import { ContactList } from 'components/ContactsList/ContactsList';
 import { Box } from 'components/common/Box';
 import { useEffect } from 'react';
@@ -25,8 +25,7 @@ export default function Settings() {
         <Box display="flex" flexDirection="column" ml="20px">
           {/* <h1>Settings</h1> */}
           <ContactForm />
-          <h2>Contacts</h2>
-          <Filter />
+
           <ContactList />
         </Box>
       </Section>
