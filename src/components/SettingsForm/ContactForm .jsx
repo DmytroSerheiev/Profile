@@ -7,7 +7,7 @@ import { addContact } from 'redux/contacts/operations';
 
 const initialValues = {
   firstName: 'John',
-  lastName: 'Doe', //======================================
+  //======================================
   phone: '+380674567890',
 };
 const rePhoneNumber =
@@ -19,9 +19,7 @@ const schema = Yup.object().shape({
     .matches(reLastName, 'Last Name is not valid')
     .required('Required'),
   //=======================================================
-  lastName: Yup.string()
-    .matches(reLastName, 'Last Name is not valid')
-    .required('Required'),
+
   //=======================================================
   phone: Yup.string()
     .matches(rePhoneNumber, 'Phone number is not valid')
@@ -33,12 +31,10 @@ export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const handleSubmit = (values, { resetForm }) => {
     const isContact = contacts.filter(
-      contact =>
-        contact.name.includes(values.firstName) &&
-        contact.lastname.includes(values.lastName) //================================
+      contact => contact.name.includes(values.firstName) //================================
     );
     if (isContact.length) {
-      alert(`${values.firstName} ${values.lastName}is alredy in contacts`);
+      alert(`${values.firstName} is alredy in contacts`);
       return;
     }
     console.log(values);
@@ -57,10 +53,7 @@ export const ContactForm = () => {
         <ErrorMessage name="firstName" component="div" />
         <br />
         {/* //=========================// */}
-        <label htmlFor="lastName">Last Name</label>
-        <InputText name="lastName" type="text" />
-        <ErrorMessage name="lastName" component="div" />
-        <br />
+
         {/* //=========================// */}
         <label htmlFor="phone">Phone Number</label>
         <InputText name="phone" type="tel" />

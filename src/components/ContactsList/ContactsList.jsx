@@ -17,11 +17,11 @@ export const ContactList = () => {
   return (
     <ul>
       <Loader isOpen={isLoading} />
-      {visibleContacts.map(({ id, name, lastname, number }) => {
+      {visibleContacts.map(({ id, name, number }) => {
         return (
           <Contact key={id}>
             {name}
-            {lastname} {number}
+            {number}
             <Button
               variant="outlined"
               onClick={() => removeContact(id)}
